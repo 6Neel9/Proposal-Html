@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: linear-gradient(to top, white, pink);
+            text-align: center;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-image: linear-gradient(to top, white, rgb(194, 80, 99));
+            padding: 95px;
+            border: 1px solid #000;
+            z-index: 9999;
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-direction: row;
+            margin-top: 10px;
+        }
+
+        .buttons-container button {
+            margin-right: 10px;
+            border: 1px transparent;
+            background-color: rgba(199, 176, 176, 0.888);
+            padding: 7px 15px;
+            border-radius: 7px;
+            box-shadow: 2px 0 7px #000;
+        }
+
+        #mainParagraph {
+            font-weight: bold;
+            font-size: 30px;
+        }
+
+        #notMainPara {
+            font-weight: bold;
+        }
+
+        .mainImage,
+        .popupImage {
+            width: 300px;
+            height: auto;
+        }
+
+        @media only screen and (max-width: 600px) {
+
+            .buttons-container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .mainImage,
+            .popupImage {
+                width: 150px;
+                height: auto;
+            }
+
+
+            .buttons-container button {
+                margin-right: 5;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <img src="https://media.tenor.com/RBa37_6ApVcAAAAi/cute-adorable.gif" id="mainImage" class="mainImage">
+    <p id="mainParagraph">Do You Love Me? 😊</p>
+    <p id="notMainPara">Neel tera hi hai</p>
+
+    <div class="buttons-container" id="hide">
+        <button onclick="showPopup()">Yes</button>
+        <button onclick="showNext()">No</button>
+    </div>
+
+    <div class="popup" id="popup">
+        <img src="https://c.tenor.com/5Q8-tojANxgAAAAC/tenor.gif" id="popupImage" class="popupImage">
+        <p id="popupParagraph">HeHehehe! I knew it!😘</p>
+    </div>
+
+    <audio id="soundtrack" src="./love.mp3" preload="auto" loop></audio>
+
+    <script>
+        var clickCount = 0;
+
+        function showPopup() {
+            document.getElementById('popup').style.display = 'block';
+            document.getElementById('soundtrack').play();
+            document.getElementById('hide').remove();
+        }
+
+        function showNext() {
+            var gifs = [
+                'https://media.tenor.com/Pbv3D2Gk_uYAAAAi/dudu-bubu.gif',
+                'https://media.tenor.com/9an4Hs_d2mUAAAAi/beg-dont-leave.gif',
+                'https://media.tenor.com/BKZWfffsvpoAAAAi/cat-farsi-hey.gif'
+            ];
+            var paragraphs = [
+                'Soch le ache se!🙄',
+                'Ek aur bar sochle!😫',
+                'Maan ja!kitta bhav kahyegi!😭'
+            ];
+            var para1 = [
+                'itte jldi na mat bol!🙄',
+                'keu aesa kar rhi hai!😫',
+                'bht galat baat hai!😭'
+            ];
+
+            clickCount++;
+            if (clickCount > 3) {
+                document.querySelector('.buttons-container').style.flexDirection = 'column';
+                document.querySelector('button:nth-child(2)').style.position = 'absolute';
+                document.querySelector('button:nth-child(2)').style.left = Math.random() * 80 + '%';
+                document.querySelector('button:nth-child(2)').style.top = Math.random() * 80 + '%';
+                return;
+            }
+
+            var index = clickCount - 1;
+
+            var newGIF = document.createElement('img');
+            newGIF.src = gifs[index];
+            newGIF.classList.add('mainImage');
+            newGIF.id = 'mainImage';
+
+            var newParagraph = document.createElement('p');
+            newParagraph.textContent = paragraphs[index];
+            newParagraph.id = 'mainParagraph';
+
+            var newPara1 = document.createElement('p');
+            newPara1.textContent = para1[index];
+            newPara1.id = 'notMainPara';
+
+            var mainImage = document.getElementById('mainImage');
+            mainImage.parentNode.replaceChild(newGIF, mainImage);
+
+            var mainParagraph = document.getElementById('mainParagraph');
+            mainParagraph.textContent = paragraphs[index];
+
+            var mainPara1 = document.getElementById('notMainPara');
+            mainPara1.textContent = para1[index];
+        }
+    </script>
+</body>
+
+</html>
