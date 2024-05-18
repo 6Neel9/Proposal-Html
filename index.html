@@ -34,6 +34,7 @@
             display: flex;
             flex-direction: row;
             margin-top: 10px;
+            justify-content: center;
         }
 
         .buttons-container button {
@@ -65,6 +66,7 @@
             .buttons-container {
                 flex-direction: row;
                 justify-content: space-between;
+                justify-content: center;
             }
 
             .mainImage,
@@ -83,15 +85,17 @@
 </head>
 
 <body>
-
-    <img src="https://media.tenor.com/RBa37_6ApVcAAAAi/cute-adorable.gif" id="mainImage" class="mainImage">
-    <p id="mainParagraph">Looking for someone? 😊</p>
-    <p id="notMainPara">your neighbourhood Neel here.</p>
-
-    <div class="buttons-container" id="hide">
-        <button onclick="showPopup()">Yes</button>
-        <button onclick="showNext()">No</button>
+    <div id="hide">
+        <img src="https://media.tenor.com/RBa37_6ApVcAAAAi/cute-adorable.gif" id="mainImage" class="mainImage">
+        <p id="mainParagraph">Looking for someone? 😊</p>
+        <p id="notMainPara">your neighbourhood Neel here.</p>
+    
+        <div class="buttons-container">
+            <button onclick="showPopup()">Yes</button>
+            <button onclick="showNext()">No</button>
+        </div>
     </div>
+
 
     <div class="popup" id="popup">
         <!-- <img src="https://c.tenor.com/5Q8-tojANxgAAAAC/tenor.gif" id="popupImage" class="popupImage"> -->
